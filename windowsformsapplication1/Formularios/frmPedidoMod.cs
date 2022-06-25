@@ -9,6 +9,7 @@ using Validar;
 using validacionesGrilla;
 using Limpiar;
 using Epson.Tickets;
+using System.Configuration;
 
 namespace NoHay2Sin3
 {
@@ -324,9 +325,14 @@ namespace NoHay2Sin3
             {
                 wDetalle.Add(dr.Cells["Descripcion"].Value.ToString());
             }
+                       
 
-            //Si se le pasa 0 o -1 al idTicket --> no lo imprime al codigo de ticket
-            wPrinterMan.newTicket(0, wNombreCliente, wDomicilio, wTelefono, wObs, wCostoEnvio, wMontoTotal, wAbonaCon, wVuelto, wDetalle, wTipoEntrega, wDemora);
+            var cantidad = Convert.ToInt32(ConfigurationManager.AppSettings["ImprimirVeces"]);
+            for (int i = 0; i < cantidad; i++)
+            {
+                //Si se le pasa 0 o -1 al idTicket --> no lo imprime al codigo de ticket
+                wPrinterMan.newTicket(0, wNombreCliente, wDomicilio, wTelefono, wObs, wCostoEnvio, wMontoTotal, wAbonaCon, wVuelto, wDetalle, wTipoEntrega, wDemora);
+            }            
         }
 
         private void LimpiarPedido()
@@ -368,7 +374,7 @@ namespace NoHay2Sin3
                 int idCliente = d_cli.getIdCliente(txtTelefonoClientePedido.Text);
                 
                 //carga de datos a la entidad ped = Pedido
-                ped.fechaPedido = DateTime.Now.ToString("dd/MM/yyyy");
+                ped.fechaPedido = DateTime.Now.ToShortDateString();
                 ped.horaPedido = DateTime.Now.ToString("HH:MM");
                 ped.idCliente = idCliente;
 
