@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 
 namespace Datos
 {
     public class Conexion
-    {
+    {      
+        public SqlConnection conection { get; private set; }
+        public Conexion()
+        {
+            conection = new SqlConnection(ConfigurationManager.ConnectionStrings["N2S3"].ConnectionString);
+        }
+
         //public SqlConnection conection = new SqlConnection("Password=server;User ID=sa;Data Source=CAJA\\SQLEXPRESS; Initial Catalog=No 2 sin 3");
         //Provider=SQLOLEDB.1;Password=server;Persist Security Info=True;User ID=sa;Data Source=CAJA\SQLEXPRESS
-        public SqlConnection conection = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=No hay 2 sin 3;Data Source=localhost");
+        //public SqlConnection conection = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=No hay 2 sin 3;Data Source=localhost");
 
         //MARCOS: public SqlConnection conection = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=NO_HAY_2_SIN_3;Data Source=JACK-PC\\SQLEXPRESS; password=901636814644");
 
