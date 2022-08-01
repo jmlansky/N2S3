@@ -7,7 +7,7 @@ namespace Entidades
 {
     public class Producto
     {
-        public int idProducto { set; get; }
+        public long idProducto { set; get; }
         public String nombreProducto { set; get; }
         public decimal precioX1 { set; get; }
         public decimal precioX2 { set; get; }
@@ -24,7 +24,7 @@ namespace Entidades
             precioX3 = 0;
         }
 
-        public Producto(int idProducto, String nombreProducto, String observacionProducto, decimal precioX1, decimal precioX2, decimal precioX3)
+        public Producto(long idProducto, String nombreProducto, String observacionProducto, decimal precioX1, decimal precioX2, decimal precioX3)
         {
             this.idProducto = idProducto;
             this.nombreProducto = nombreProducto;

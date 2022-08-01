@@ -44,7 +44,7 @@ namespace Datos
             return dt;
         }
 
-        public Producto getProducto(int idProducto)
+        public Producto getProducto(long idProducto)
         {
             Conexion con = new Conexion();
             if (con.conection.State == ConnectionState.Open)
@@ -60,7 +60,7 @@ namespace Datos
             SqlDataReader dr = com.ExecuteReader();
             if (dr.Read())
             {
-                prod.idProducto = Convert.ToInt16(dr["idProducto"].ToString());
+                prod.idProducto = Convert.ToInt64(dr["idProducto"].ToString());
                 prod.nombreProducto = dr["nombreProducto"].ToString();
                 prod.observacionProducto = dr["observacionProducto"].ToString();
                 prod.precioX1 = Convert.ToDecimal(dr["idProducto"].ToString());
@@ -106,7 +106,7 @@ namespace Datos
             return respuesta;
         }
 
-        public bool borrarProducto(int idProducto)
+        public bool borrarProducto(long idProducto)
         {
             bool respuesta = false;
             Conexion con = new Conexion();

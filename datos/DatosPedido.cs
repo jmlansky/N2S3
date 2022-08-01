@@ -42,7 +42,7 @@ namespace Datos
 
                 SqlCommand com1 = new SqlCommand("Select ped.idPedido from Pedido ped where ped.idPedido = @@identity", con.conection);
                 com1.Transaction = tran;
-                int idPedido = Convert.ToInt16(com1.ExecuteScalar().ToString());
+                long idPedido = Convert.ToInt64(com1.ExecuteScalar().ToString());
                                 
                 // insertar detalle de pedido
                 foreach (DetallePromocion detP in dp)
@@ -126,7 +126,7 @@ namespace Datos
         /// </summary>
         /// <param name="pIdPedido">ID pedido a buscar</param>
         /// <returns>Pedido encontrado, puede devolver null</returns>
-        public Pedido getOnePedidoById(int pIdPedido)
+        public Pedido getOnePedidoById(long pIdPedido)
         {
 
             Pedido oPedido = null;
@@ -187,7 +187,7 @@ namespace Datos
             return oPedido;
         }
 
-        public DataTable getAllDetallesPedido(int idPedido)
+        public DataTable getAllDetallesPedido(long idPedido)
         {
             DataTable dt = new DataTable();
             Conexion con = new Conexion();
@@ -219,7 +219,7 @@ namespace Datos
         /// </summary>
         /// <param name="idPedido">ID de pedido </param>
         /// <returns>DataTable</returns>
-        public DataTable getAllDetallesPedidoFull(int idPedido)
+        public DataTable getAllDetallesPedidoFull(long idPedido)
         {
             DataTable dt = new DataTable();
             Conexion con = new Conexion();
@@ -346,7 +346,7 @@ namespace Datos
         /// <param name="idPedido"> ID del pedido a eliminar</param>
         /// <param name="eliminarDetalles">Flag que indica si se debe eliminar los detalles de pedidos tambien</param>
         /// <returns> Flag que indica si se pudo realizar la operacion solicitada</returns>
-        public bool eliminarPedido(int idPedido,bool eliminarDetalles)
+        public bool eliminarPedido(long idPedido,bool eliminarDetalles)
         {
             bool respuesta = false;
 
@@ -392,7 +392,7 @@ namespace Datos
         /// </summary>
         /// <param name="idPedido"> Id del pedido al que pertenecen los detalles</param>
         /// <returns>Flag que indica si se pudo realizar la eliminacion</returns>
-        public bool eliminarDetallesDePedidoPorIPedido(int idPedido)
+        public bool eliminarDetallesDePedidoPorIPedido(long idPedido)
         {
             bool respuesta = false;
             Conexion con = new Conexion();
@@ -460,7 +460,7 @@ namespace Datos
             return "";
         }
 
-        public bool actualizarEstadoPedido(int idPedido)
+        public bool actualizarEstadoPedido(long idPedido)
         {
             return false;
         }

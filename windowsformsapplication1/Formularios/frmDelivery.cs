@@ -39,7 +39,7 @@ namespace NoHay2Sin3
                 //else --> actualizar
                 if (d_ped.getPrecioDelivery() == -1)
                 {
-                    if (d_ped.insertarPrecioDelivery(Convert.ToDecimal(txtPrecioDelivery.Text)) == true)
+                    if (d_ped.insertarPrecioDelivery(Convert.ToDecimal(txtPrecioDelivery.Text.Replace(',', '.'))) == true)
                     {
                         MessageBox.Show("Se ha guardado el precio de delivery.\n El nuevo precio es: " + txtPrecioDelivery.Text, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtPrecioDelivery.Text = "";
@@ -47,7 +47,7 @@ namespace NoHay2Sin3
                 }
                 else
                 {
-                    if (d_ped.actualizarPrecioDelivery(Convert.ToDecimal(txtPrecioDelivery.Text)) == true)
+                    if (d_ped.actualizarPrecioDelivery(Convert.ToDecimal(txtPrecioDelivery.Text.Replace(',', '.'))) == true)
                     {
                         MessageBox.Show("Se ha actualizado el precio de delivery.\n El nuevo precio es: " + txtPrecioDelivery.Text, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtPrecioDelivery.Text = "";
@@ -75,6 +75,11 @@ namespace NoHay2Sin3
         {
             Validaciones_y_Calculos val = new Validaciones_y_Calculos();
             val.CompletarDecimales(txtPrecioDelivery);
+        }
+
+        private void txtPrecioDelivery_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

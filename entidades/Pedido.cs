@@ -8,7 +8,7 @@ namespace Entidades
     public class Pedido
     {
         public int idCliente { set; get; }
-        public int idPedido { set; get; }
+        public long idPedido { set; get; }
         public decimal montoTotalPedido { set; get; }
         public String fechaPedido { set; get; }
         public String horaPedido { set; get; }

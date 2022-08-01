@@ -8,8 +8,8 @@ namespace Entidades
     public class DetallePedido
     {
         public int idDetallePedido { set; get; }
-        public int idPedido { set; get; }
-        public int idProducto { set; get; }
+        public long idPedido { set; get; }
+        public long idProducto { set; get; }
         public int cantidadProductoDetallePedido { set; get; }
         public String observacionDetallePedido { set; get; }
         public decimal precioX1 { set; get; }

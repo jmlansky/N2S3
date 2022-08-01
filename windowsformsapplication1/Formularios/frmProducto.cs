@@ -29,9 +29,10 @@ namespace NoHay2Sin3
                 Producto prod = new Producto();
                 prod.nombreProducto = txtProducto.Text;
                 prod.observacionProducto = txtObservaciones.Text;
-                prod.precioX1 = Convert.ToDecimal(txtX1.Text);
-                prod.precioX2 = Convert.ToDecimal(txtX2.Text);
-                prod.precioX3 = Convert.ToDecimal(txtX3.Text);
+
+                prod.precioX1 = Convert.ToDecimal(txtX1.Text.Replace(',', '.'));
+                prod.precioX2 = Convert.ToDecimal(txtX2.Text.Replace(',', '.'));
+                prod.precioX3 = Convert.ToDecimal(txtX3.Text.Replace(',', '.'));
 
                 if (lblIdProducto.Text == "")
                 {
@@ -160,6 +161,11 @@ namespace NoHay2Sin3
         {
             Validaciones_y_Calculos val = new Validaciones_y_Calculos();
             val.CompletarDecimales(txtX3);
+        }
+
+        private void txtX1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

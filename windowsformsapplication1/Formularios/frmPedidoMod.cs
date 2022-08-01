@@ -20,7 +20,7 @@ namespace NoHay2Sin3
         // atributo que indica si es una actualizacion de pedido o un nuevo pedido, por defecto es un nuevo pedido
         private bool esActualizacion = false;
         // atributo que contiene el id del pedido que se va a actualizar (se borra y se crea otro nuevo)
-        private int idPedidoActualizar = -1;
+        private long idPedidoActualizar = -1;
 
         public frmPedido()
         {
@@ -471,7 +471,7 @@ namespace NoHay2Sin3
                     {
                         if (!txt.Text.Substring(a, 1).Equals("0") || !txt.Text.Substring(a + 1, 1).Equals("0"))
                         {
-                            txt.Text = (Convert.ToInt16(txt.Text.Substring(0, a - 1)) + 1).ToString();
+                            txt.Text = (Convert.ToInt32(txt.Text.Substring(0, a - 1)) + 1).ToString();
                             txt.Text += ",00";
                         }
                         break;
@@ -706,7 +706,7 @@ namespace NoHay2Sin3
                         {
                             DetallePromocion dp = new DetallePromocion();
                             dp.cantidadProducto = Convert.ToInt32(fila.Cells["cantidadProducto"].Value.ToString());
-                            dp.idProducto = Convert.ToInt32(fila.Cells["idProducto"].Value.ToString());
+                            dp.idProducto = Convert.ToInt64(fila.Cells["idProducto"].Value.ToString());
                             dp.nombreProducto = fila.Cells["nombreProducto"].Value.ToString();
                             dp.precioX1 = Convert.ToDecimal(fila.Cells["precioX1"].Value.ToString());
                             dp.precioX2 = Convert.ToDecimal(fila.Cells["precioX2"].Value.ToString());
@@ -912,10 +912,10 @@ namespace NoHay2Sin3
                     this.esActualizacion = true;
 
                     // obtener el id del pedido a modificar
-                    this.idPedidoActualizar = Convert.ToInt32(dgvPedidosDia.Rows[oSelectedIndex].Cells[1].Value);
+                    this.idPedidoActualizar = Convert.ToInt64(dgvPedidosDia.Rows[oSelectedIndex].Cells[1].Value);
 
                     // cargar los datos del pedido a modificar
-                    this.cargarEdicionPedido(this.idPedidoActualizar);
+                    this.cargarEdicionPedido(idPedidoActualizar);
                 }
 
             }
@@ -925,7 +925,7 @@ namespace NoHay2Sin3
         /// Metodo que permite cargar en cada uno de los campos los datos del pedidos a modificar
         /// </summary>
         /// <param name="pIdPedido">Id del pedido a modificar</param>
-        private void cargarEdicionPedido(int pIdPedido)
+        private void cargarEdicionPedido(long pIdPedido)
         {
             DatosPedido oDatosPedido = new DatosPedido();
 

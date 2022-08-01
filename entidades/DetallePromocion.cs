@@ -7,8 +7,8 @@ namespace Entidades
 {
     public class DetallePromocion
     {
-        public int idPedido { set; get; }
-        public int idProducto { set; get; }
+        public long idPedido { set; get; }
+        public long idProducto { set; get; }
         public string nombreProducto { set; get; }
         public int cantidadProducto { set; get; }
         public decimal precioX1 { set; get; }
