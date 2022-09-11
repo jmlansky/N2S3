@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedido));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvItemsPedido = new System.Windows.Forms.DataGridView();
             this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,26 +64,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnNuevaPromocion = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panelPago = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtDto = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtDemora = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtVuelto = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnCalcularMontoTotalPedido = new System.Windows.Forms.Button();
-            this.btnImprimirPedido = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvPromociones = new System.Windows.Forms.DataGridView();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.rbMostrador = new System.Windows.Forms.RadioButton();
-            this.rbDelivery = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvPedidosDia = new System.Windows.Forms.DataGridView();
-            this.eliminarPromo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,17 +76,36 @@
             this.tiempoDemoraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descuentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pedidoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnCalcularMontoTotalPedido = new System.Windows.Forms.Button();
+            this.btnImprimirPedido = new System.Windows.Forms.Button();
+            this.panelPago = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDto = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDemora = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtVuelto = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvPromociones = new System.Windows.Forms.DataGridView();
+            this.eliminarPromo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.rbMostrador = new System.Windows.Forms.RadioButton();
+            this.rbDelivery = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemsPedido)).BeginInit();
             this.panelEncabezadoPedido.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosDia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).BeginInit();
             this.panelPago.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPromociones)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosDia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvItemsPedido
@@ -233,7 +233,6 @@
             this.txtTelefonoClientePedido.Name = "txtTelefonoClientePedido";
             this.txtTelefonoClientePedido.Size = new System.Drawing.Size(104, 20);
             this.txtTelefonoClientePedido.TabIndex = 0;
-            this.txtTelefonoClientePedido.TextChanged += new System.EventHandler(this.txtTelefonoClientePedido_TextChanged);
             this.txtTelefonoClientePedido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTelefonoClientePedido_KeyDown);
             this.txtTelefonoClientePedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoClientePedido_KeyPress);
             // 
@@ -315,7 +314,7 @@
             // 
             this.txtMontoAbono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMontoAbono.Location = new System.Drawing.Point(52, 100);
-            this.txtMontoAbono.MaxLength = 4;
+            this.txtMontoAbono.MaxLength = 99;
             this.txtMontoAbono.Name = "txtMontoAbono";
             this.txtMontoAbono.Size = new System.Drawing.Size(41, 20);
             this.txtMontoAbono.TabIndex = 2;
@@ -353,7 +352,7 @@
             // 
             this.txtEnvioPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEnvioPedido.Location = new System.Drawing.Point(52, 7);
-            this.txtEnvioPedido.MaxLength = 5;
+            this.txtEnvioPedido.MaxLength = 15;
             this.txtEnvioPedido.Name = "txtEnvioPedido";
             this.txtEnvioPedido.Size = new System.Drawing.Size(41, 20);
             this.txtEnvioPedido.TabIndex = 0;
@@ -458,205 +457,6 @@
             this.panel3.Size = new System.Drawing.Size(238, 308);
             this.panel3.TabIndex = 2;
             // 
-            // panelPago
-            // 
-            this.panelPago.BackColor = System.Drawing.Color.BurlyWood;
-            this.panelPago.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelPago.Controls.Add(this.label12);
-            this.panelPago.Controls.Add(this.txtDto);
-            this.panelPago.Controls.Add(this.label11);
-            this.panelPago.Controls.Add(this.txtDemora);
-            this.panelPago.Controls.Add(this.label9);
-            this.panelPago.Controls.Add(this.txtVuelto);
-            this.panelPago.Controls.Add(this.label8);
-            this.panelPago.Controls.Add(this.txtEnvioPedido);
-            this.panelPago.Controls.Add(this.txtMontoAbono);
-            this.panelPago.Controls.Add(this.label5);
-            this.panelPago.Controls.Add(this.txtMontoTotalPedido);
-            this.panelPago.Controls.Add(this.label7);
-            this.panelPago.Controls.Add(this.label4);
-            this.panelPago.Location = new System.Drawing.Point(166, 3);
-            this.panelPago.Name = "panelPago";
-            this.panelPago.Size = new System.Drawing.Size(109, 202);
-            this.panelPago.TabIndex = 0;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(83, 40);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(19, 15);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "%";
-            // 
-            // txtDto
-            // 
-            this.txtDto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDto.Location = new System.Drawing.Point(52, 38);
-            this.txtDto.MaxLength = 5;
-            this.txtDto.Name = "txtDto";
-            this.txtDto.Size = new System.Drawing.Size(30, 20);
-            this.txtDto.TabIndex = 1;
-            this.txtDto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDto_KeyPress);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(25, 43);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(24, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Dto";
-            // 
-            // txtDemora
-            // 
-            this.txtDemora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDemora.Location = new System.Drawing.Point(52, 162);
-            this.txtDemora.MaxLength = 3;
-            this.txtDemora.Name = "txtDemora";
-            this.txtDemora.Size = new System.Drawing.Size(41, 20);
-            this.txtDemora.TabIndex = 3;
-            this.txtDemora.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDemora_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 165);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Demora";
-            // 
-            // txtVuelto
-            // 
-            this.txtVuelto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVuelto.Location = new System.Drawing.Point(52, 131);
-            this.txtVuelto.MaxLength = 5;
-            this.txtVuelto.Name = "txtVuelto";
-            this.txtVuelto.ReadOnly = true;
-            this.txtVuelto.Size = new System.Drawing.Size(41, 20);
-            this.txtVuelto.TabIndex = 3;
-            this.txtVuelto.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 134);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Vuelto";
-            // 
-            // btnCalcularMontoTotalPedido
-            // 
-            this.btnCalcularMontoTotalPedido.BackColor = System.Drawing.Color.MistyRose;
-            this.btnCalcularMontoTotalPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCalcularMontoTotalPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcularMontoTotalPedido.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcularMontoTotalPedido.Image")));
-            this.btnCalcularMontoTotalPedido.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCalcularMontoTotalPedido.Location = new System.Drawing.Point(27, 202);
-            this.btnCalcularMontoTotalPedido.Name = "btnCalcularMontoTotalPedido";
-            this.btnCalcularMontoTotalPedido.Size = new System.Drawing.Size(74, 99);
-            this.btnCalcularMontoTotalPedido.TabIndex = 1;
-            this.btnCalcularMontoTotalPedido.Text = "Calcular (Enter)";
-            this.btnCalcularMontoTotalPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCalcularMontoTotalPedido.UseVisualStyleBackColor = false;
-            this.btnCalcularMontoTotalPedido.Click += new System.EventHandler(this.btnCalcularMontoTotalPedido_Click);
-            // 
-            // btnImprimirPedido
-            // 
-            this.btnImprimirPedido.BackColor = System.Drawing.Color.MistyRose;
-            this.btnImprimirPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnImprimirPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirPedido.Image = global::NoHay2Sin3.Properties.Resources.print1;
-            this.btnImprimirPedido.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImprimirPedido.Location = new System.Drawing.Point(132, 202);
-            this.btnImprimirPedido.Name = "btnImprimirPedido";
-            this.btnImprimirPedido.Size = new System.Drawing.Size(74, 99);
-            this.btnImprimirPedido.TabIndex = 2;
-            this.btnImprimirPedido.Text = "Imprimir (F11)";
-            this.btnImprimirPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnImprimirPedido.UseVisualStyleBackColor = false;
-            this.btnImprimirPedido.Click += new System.EventHandler(this.btnImprimirPedido_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.panelPago);
-            this.panel1.Controls.Add(this.dgvPromociones);
-            this.panel1.Location = new System.Drawing.Point(302, 113);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 212);
-            this.panel1.TabIndex = 4;
-            // 
-            // dgvPromociones
-            // 
-            this.dgvPromociones.AllowUserToAddRows = false;
-            this.dgvPromociones.AllowUserToDeleteRows = false;
-            this.dgvPromociones.AllowUserToResizeColumns = false;
-            this.dgvPromociones.AllowUserToResizeRows = false;
-            this.dgvPromociones.BackgroundColor = System.Drawing.Color.BurlyWood;
-            this.dgvPromociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPromociones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.eliminarPromo,
-            this.cantidad,
-            this.Descripcion});
-            this.dgvPromociones.Location = new System.Drawing.Point(3, 3);
-            this.dgvPromociones.MultiSelect = false;
-            this.dgvPromociones.Name = "dgvPromociones";
-            this.dgvPromociones.ReadOnly = true;
-            this.dgvPromociones.RowHeadersVisible = false;
-            this.dgvPromociones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvPromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPromociones.Size = new System.Drawing.Size(157, 202);
-            this.dgvPromociones.TabIndex = 1;
-            this.dgvPromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPromociones_CellContentClick);
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.rbMostrador);
-            this.panel5.Controls.Add(this.rbDelivery);
-            this.panel5.Location = new System.Drawing.Point(17, 12);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(161, 41);
-            this.panel5.TabIndex = 0;
-            // 
-            // rbMostrador
-            // 
-            this.rbMostrador.AutoSize = true;
-            this.rbMostrador.Location = new System.Drawing.Point(82, 10);
-            this.rbMostrador.Name = "rbMostrador";
-            this.rbMostrador.Size = new System.Drawing.Size(72, 17);
-            this.rbMostrador.TabIndex = 1;
-            this.rbMostrador.Text = "Mostrador";
-            this.rbMostrador.UseVisualStyleBackColor = true;
-            this.rbMostrador.CheckedChanged += new System.EventHandler(this.rbMostrador_CheckedChanged);
-            // 
-            // rbDelivery
-            // 
-            this.rbDelivery.AutoSize = true;
-            this.rbDelivery.Checked = true;
-            this.rbDelivery.Location = new System.Drawing.Point(3, 10);
-            this.rbDelivery.Name = "rbDelivery";
-            this.rbDelivery.Size = new System.Drawing.Size(63, 17);
-            this.rbDelivery.TabIndex = 0;
-            this.rbDelivery.TabStop = true;
-            this.rbDelivery.Text = "Delivery";
-            this.rbDelivery.UseVisualStyleBackColor = true;
-            this.rbDelivery.CheckedChanged += new System.EventHandler(this.rbDelivery_CheckedChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::NoHay2Sin3.Properties.Resources.logo_chico;
-            this.pictureBox1.Location = new System.Drawing.Point(46, 57);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // dgvPedidosDia
             // 
             this.dgvPedidosDia.AllowUserToAddRows = false;
@@ -684,41 +484,6 @@
             this.dgvPedidosDia.Size = new System.Drawing.Size(228, 193);
             this.dgvPedidosDia.TabIndex = 3;
             this.dgvPedidosDia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidosDia_CellDoubleClick);
-            // 
-            // eliminarPromo
-            // 
-            this.eliminarPromo.HeaderText = "";
-            this.eliminarPromo.Name = "eliminarPromo";
-            this.eliminarPromo.ReadOnly = true;
-            this.eliminarPromo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.eliminarPromo.Text = "X";
-            this.eliminarPromo.ToolTipText = "Eliminar Promo";
-            this.eliminarPromo.UseColumnTextForButtonValue = true;
-            this.eliminarPromo.Width = 30;
-            // 
-            // cantidad
-            // 
-            this.cantidad.DataPropertyName = "cantidad";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.cantidad.DefaultCellStyle = dataGridViewCellStyle2;
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            this.cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.cantidad.Visible = false;
-            this.cantidad.Width = 40;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Descripcion.DataPropertyName = "descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Descripcion.Width = 69;
             // 
             // idClienteDataGridViewTextBoxColumn
             // 
@@ -807,6 +572,240 @@
             // 
             this.pedidoBindingSource.DataSource = typeof(Entidades.Pedido);
             // 
+            // btnCalcularMontoTotalPedido
+            // 
+            this.btnCalcularMontoTotalPedido.BackColor = System.Drawing.Color.MistyRose;
+            this.btnCalcularMontoTotalPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCalcularMontoTotalPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcularMontoTotalPedido.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcularMontoTotalPedido.Image")));
+            this.btnCalcularMontoTotalPedido.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCalcularMontoTotalPedido.Location = new System.Drawing.Point(27, 202);
+            this.btnCalcularMontoTotalPedido.Name = "btnCalcularMontoTotalPedido";
+            this.btnCalcularMontoTotalPedido.Size = new System.Drawing.Size(74, 99);
+            this.btnCalcularMontoTotalPedido.TabIndex = 1;
+            this.btnCalcularMontoTotalPedido.Text = "Calcular (Enter)";
+            this.btnCalcularMontoTotalPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCalcularMontoTotalPedido.UseVisualStyleBackColor = false;
+            this.btnCalcularMontoTotalPedido.Click += new System.EventHandler(this.btnCalcularMontoTotalPedido_Click);
+            // 
+            // btnImprimirPedido
+            // 
+            this.btnImprimirPedido.BackColor = System.Drawing.Color.MistyRose;
+            this.btnImprimirPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImprimirPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirPedido.Image = global::NoHay2Sin3.Properties.Resources.print1;
+            this.btnImprimirPedido.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnImprimirPedido.Location = new System.Drawing.Point(132, 202);
+            this.btnImprimirPedido.Name = "btnImprimirPedido";
+            this.btnImprimirPedido.Size = new System.Drawing.Size(74, 99);
+            this.btnImprimirPedido.TabIndex = 2;
+            this.btnImprimirPedido.Text = "Imprimir (F11)";
+            this.btnImprimirPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnImprimirPedido.UseVisualStyleBackColor = false;
+            this.btnImprimirPedido.Click += new System.EventHandler(this.btnImprimirPedido_Click);
+            // 
+            // panelPago
+            // 
+            this.panelPago.BackColor = System.Drawing.Color.BurlyWood;
+            this.panelPago.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelPago.Controls.Add(this.label12);
+            this.panelPago.Controls.Add(this.txtDto);
+            this.panelPago.Controls.Add(this.label11);
+            this.panelPago.Controls.Add(this.txtDemora);
+            this.panelPago.Controls.Add(this.label9);
+            this.panelPago.Controls.Add(this.txtVuelto);
+            this.panelPago.Controls.Add(this.label8);
+            this.panelPago.Controls.Add(this.txtEnvioPedido);
+            this.panelPago.Controls.Add(this.txtMontoAbono);
+            this.panelPago.Controls.Add(this.label5);
+            this.panelPago.Controls.Add(this.txtMontoTotalPedido);
+            this.panelPago.Controls.Add(this.label7);
+            this.panelPago.Controls.Add(this.label4);
+            this.panelPago.Location = new System.Drawing.Point(166, 3);
+            this.panelPago.Name = "panelPago";
+            this.panelPago.Size = new System.Drawing.Size(109, 202);
+            this.panelPago.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(83, 40);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(19, 15);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "%";
+            // 
+            // txtDto
+            // 
+            this.txtDto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDto.Location = new System.Drawing.Point(52, 38);
+            this.txtDto.MaxLength = 15;
+            this.txtDto.Name = "txtDto";
+            this.txtDto.Size = new System.Drawing.Size(30, 20);
+            this.txtDto.TabIndex = 1;
+            this.txtDto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDto_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(25, 43);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(24, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Dto";
+            // 
+            // txtDemora
+            // 
+            this.txtDemora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDemora.Location = new System.Drawing.Point(52, 162);
+            this.txtDemora.MaxLength = 99;
+            this.txtDemora.Name = "txtDemora";
+            this.txtDemora.Size = new System.Drawing.Size(41, 20);
+            this.txtDemora.TabIndex = 3;
+            this.txtDemora.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDemora_KeyPress);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 165);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Demora";
+            // 
+            // txtVuelto
+            // 
+            this.txtVuelto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVuelto.Location = new System.Drawing.Point(52, 131);
+            this.txtVuelto.MaxLength = 99;
+            this.txtVuelto.Name = "txtVuelto";
+            this.txtVuelto.ReadOnly = true;
+            this.txtVuelto.Size = new System.Drawing.Size(41, 20);
+            this.txtVuelto.TabIndex = 3;
+            this.txtVuelto.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 134);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Vuelto";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.panelPago);
+            this.panel1.Controls.Add(this.dgvPromociones);
+            this.panel1.Location = new System.Drawing.Point(302, 113);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(282, 212);
+            this.panel1.TabIndex = 4;
+            // 
+            // dgvPromociones
+            // 
+            this.dgvPromociones.AllowUserToAddRows = false;
+            this.dgvPromociones.AllowUserToDeleteRows = false;
+            this.dgvPromociones.AllowUserToResizeColumns = false;
+            this.dgvPromociones.AllowUserToResizeRows = false;
+            this.dgvPromociones.BackgroundColor = System.Drawing.Color.BurlyWood;
+            this.dgvPromociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPromociones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.eliminarPromo,
+            this.cantidad,
+            this.Descripcion});
+            this.dgvPromociones.Location = new System.Drawing.Point(3, 3);
+            this.dgvPromociones.MultiSelect = false;
+            this.dgvPromociones.Name = "dgvPromociones";
+            this.dgvPromociones.ReadOnly = true;
+            this.dgvPromociones.RowHeadersVisible = false;
+            this.dgvPromociones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPromociones.Size = new System.Drawing.Size(157, 202);
+            this.dgvPromociones.TabIndex = 1;
+            this.dgvPromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPromociones_CellContentClick);
+            // 
+            // eliminarPromo
+            // 
+            this.eliminarPromo.HeaderText = "";
+            this.eliminarPromo.Name = "eliminarPromo";
+            this.eliminarPromo.ReadOnly = true;
+            this.eliminarPromo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.eliminarPromo.Text = "X";
+            this.eliminarPromo.ToolTipText = "Eliminar Promo";
+            this.eliminarPromo.UseColumnTextForButtonValue = true;
+            this.eliminarPromo.Width = 30;
+            // 
+            // cantidad
+            // 
+            this.cantidad.DataPropertyName = "cantidad";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.cantidad.DefaultCellStyle = dataGridViewCellStyle2;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            this.cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.cantidad.Visible = false;
+            this.cantidad.Width = 40;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Descripcion.DataPropertyName = "descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Descripcion.Width = 69;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.rbMostrador);
+            this.panel5.Controls.Add(this.rbDelivery);
+            this.panel5.Location = new System.Drawing.Point(17, 12);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(161, 41);
+            this.panel5.TabIndex = 0;
+            // 
+            // rbMostrador
+            // 
+            this.rbMostrador.AutoSize = true;
+            this.rbMostrador.Location = new System.Drawing.Point(82, 10);
+            this.rbMostrador.Name = "rbMostrador";
+            this.rbMostrador.Size = new System.Drawing.Size(72, 17);
+            this.rbMostrador.TabIndex = 1;
+            this.rbMostrador.Text = "Mostrador";
+            this.rbMostrador.UseVisualStyleBackColor = true;
+            this.rbMostrador.CheckedChanged += new System.EventHandler(this.rbMostrador_CheckedChanged);
+            // 
+            // rbDelivery
+            // 
+            this.rbDelivery.AutoSize = true;
+            this.rbDelivery.Checked = true;
+            this.rbDelivery.Location = new System.Drawing.Point(3, 10);
+            this.rbDelivery.Name = "rbDelivery";
+            this.rbDelivery.Size = new System.Drawing.Size(63, 17);
+            this.rbDelivery.TabIndex = 0;
+            this.rbDelivery.TabStop = true;
+            this.rbDelivery.Text = "Delivery";
+            this.rbDelivery.UseVisualStyleBackColor = true;
+            this.rbDelivery.CheckedChanged += new System.EventHandler(this.rbDelivery_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::NoHay2Sin3.Properties.Resources.logo_chico;
+            this.pictureBox1.Location = new System.Drawing.Point(46, 57);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -835,6 +834,8 @@
             this.panelEncabezadoPedido.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosDia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).EndInit();
             this.panelPago.ResumeLayout(false);
             this.panelPago.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -842,8 +843,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidosDia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

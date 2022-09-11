@@ -15,9 +15,7 @@ namespace Datos
             bool respuesta = false;
             Conexion con = new Conexion();
             if (con.conection.State == ConnectionState.Open)
-            {
                 con.conection.Close();
-            }
 
             con.conection.Open();
             SqlTransaction tran = con.conection.BeginTransaction();
@@ -113,22 +111,20 @@ namespace Datos
         /// </summary>
         /// <param name="telefonoCliente"></param>
         /// <returns></returns>
-        public int getIdCliente(String telefonoCliente)
+        public long getIdCliente(string telefonoCliente)
         {
             Conexion con = new Conexion();
             if (con.conection.State == ConnectionState.Open)
-            {
                 con.conection.Close();
-            }
 
             con.conection.Open();
 
-            int idCliente = 0;
             SqlCommand com = new SqlCommand("select cli.idCliente from Cliente cli where cli.telefonoCliente = @telefonoCliente", con.conection);
             com.Parameters.AddWithValue("@telefonoCliente", telefonoCliente);
-            idCliente = Convert.ToInt32(com.ExecuteScalar());
+            var result = com.ExecuteScalar();
             con.conection.Close();
-            return idCliente;
+
+            return result != null && Convert.ToInt64(result) > 0 ? Convert.ToInt64(result) : 0;
         }
 
         /// <summary>
@@ -137,7 +133,7 @@ namespace Datos
         /// </summary>
         /// <param name="pIdCliente">int Id del cliente a buscar</param>
         /// <returns>Cliente encontrado, puede devolver null</returns>
-        public Cliente getClienteById(int pIdCliente)
+        public Cliente getClienteById(long pIdCliente)
         {
             Conexion con = new Conexion();
             if (con.conection.State == ConnectionState.Open)
@@ -169,10 +165,10 @@ namespace Datos
             {
                 // crear el cliente
                 oCliente = new Cliente();
-                oCliente.idCliente          = Convert.ToInt32(oDr["idCliente"].ToString());
-                oCliente.nombreCliente      = oDr["nombreCliente"].ToString();
-                oCliente.domicilioCliente   = oDr["domicilioCliente"].ToString();
-                oCliente.telefonoCliente    = oDr["telefonoCliente"].ToString();
+                oCliente.idCliente = Convert.ToInt32(oDr["idCliente"].ToString());
+                oCliente.nombreCliente = oDr["nombreCliente"].ToString();
+                oCliente.domicilioCliente = oDr["domicilioCliente"].ToString();
+                oCliente.telefonoCliente = oDr["telefonoCliente"].ToString();
 
             }
 
@@ -196,7 +192,7 @@ namespace Datos
                 oCom.Parameters.AddWithValue("@nombreCliente", pCli.nombreCliente);
                 oCom.Parameters.AddWithValue("@telefonoCliente", pCli.telefonoCliente);
                 oCom.Parameters.AddWithValue("@domicilioCliente", pCli.domicilioCliente);
-               
+
                 oCom.Transaction = oTran;
                 oCom.ExecuteNonQuery();
 

@@ -21,7 +21,7 @@ namespace NoHay2Sin3
         private void frmDelivery_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                this.Close();
+                Close();
             if (e.KeyCode == Keys.Enter)
                 btnGuardarPrecioDelivery_Click(sender, e);
         }
@@ -29,33 +29,44 @@ namespace NoHay2Sin3
         private void btnGuardarPrecioDelivery_Click(object sender, EventArgs e)
         {
             //guardar precio de delivery
-            DialogResult resultado= MessageBox.Show("Está seguro que desea guardar el nuevo precio?", "Confirmación de precio de delivery", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Está seguro que desea guardar el nuevo precio?", "Confirmación de precio de delivery", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado.ToString() == "Yes")
             {
-                DatosPedido d_ped = new DatosPedido();
+                try
+                {
+                    DatosPedido d_ped = new DatosPedido();
 
-                //verificar si existe algun precio
-                //si no existe --> insertar
-                //else --> actualizar
-                if (d_ped.getPrecioDelivery() == -1)
-                {
-                    if (d_ped.insertarPrecioDelivery(Convert.ToDecimal(txtPrecioDelivery.Text.Replace(',', '.'))) == true)
+                    //verificar si existe algun precio
+                    //si no existe --> insertar
+                    //else --> actualizar
+                    var precio = Convert.ToDecimal(txtPrecioDelivery.Text.Replace(',', '.'));
+                    if (d_ped.getPrecioDelivery() == -1)
                     {
-                        MessageBox.Show("Se ha guardado el precio de delivery.\n El nuevo precio es: " + txtPrecioDelivery.Text, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtPrecioDelivery.Text = "";
+                        if (d_ped.insertarPrecioDelivery(precio))
+                        {
+                            MessageBox.Show("Se ha guardado el precio de delivery.\n El nuevo precio es: " + txtPrecioDelivery.Text, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtPrecioDelivery.Text = "";
+                        }
+                        else
+                            throw new Exception("Error al insertar el precio del delivery");
+                    }
+                    else
+                    {
+                        if (d_ped.actualizarPrecioDelivery(precio))
+                        {
+                            MessageBox.Show("Se ha actualizado el precio de delivery.\n El nuevo precio es: " + txtPrecioDelivery.Text, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            txtPrecioDelivery.Text = "";
+                        }
+                        else
+                            throw new Exception("Error al actualizar el precio del delivery");
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    if (d_ped.actualizarPrecioDelivery(Convert.ToDecimal(txtPrecioDelivery.Text.Replace(',', '.'))) == true)
-                    {
-                        MessageBox.Show("Se ha actualizado el precio de delivery.\n El nuevo precio es: " + txtPrecioDelivery.Text, "OK", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtPrecioDelivery.Text = "";
-                    }
+                    throw;
                 }
-                
             }
-            else { this.Close(); }
+            else { Close(); }
         }
 
         private void frmDelivery_Load(object sender, EventArgs e)
@@ -75,11 +86,6 @@ namespace NoHay2Sin3
         {
             Validaciones_y_Calculos val = new Validaciones_y_Calculos();
             val.CompletarDecimales(txtPrecioDelivery);
-        }
-
-        private void txtPrecioDelivery_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

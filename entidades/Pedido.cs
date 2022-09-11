@@ -7,18 +7,18 @@ namespace Entidades
 {
     public class Pedido
     {
-        public int idCliente { set; get; }
+        public long idCliente { set; get; }
         public long idPedido { set; get; }
         public decimal montoTotalPedido { set; get; }
-        public String fechaPedido { set; get; }
-        public String horaPedido { set; get; }
-        public String observacionPedido { set; get; }
-        public String domicilioEntregaPedido { set; get; }
-        public List<Promocion> listaPromociones { set; get; }
-        public Decimal montoAbono { set; get; }
+        public string fechaPedido { set; get; }
+        public string horaPedido { set; get; }
+        public string observacionPedido { set; get; }
+        public string domicilioEntregaPedido { set; get; }
+        public List<Promocion> listaPromociones { set; get; } 
+        public decimal montoAbono { set; get; }
         public int tiempoDemora { set; get; }
         public int descuento { set; get; }
-        public String nombreClienteMostrador { get; set; }
+        public string nombreClienteMostrador { get; set; }
 
         public Pedido()
         {
@@ -38,28 +38,26 @@ namespace Entidades
 
         public Pedido(Pedido ped)
         {
-            this.idCliente = ped.idCliente; ;
-            this.idPedido = ped.idPedido;
-            this.montoTotalPedido = ped.montoTotalPedido;
-            this.fechaPedido = ped.fechaPedido;
-            this.horaPedido = ped.horaPedido;
-            this.observacionPedido = ped.observacionPedido;
-            this.domicilioEntregaPedido = ped.domicilioEntregaPedido;
-            this.listaPromociones = ped.listaPromociones;
-            this.montoAbono = ped.montoAbono;
-            this.tiempoDemora = ped.tiempoDemora;
-            this.descuento = ped.descuento;
-            this.nombreClienteMostrador = ped.nombreClienteMostrador;
+            idCliente = ped.idCliente; ;
+            idPedido = ped.idPedido;
+            montoTotalPedido = ped.montoTotalPedido;
+            fechaPedido = ped.fechaPedido;
+            horaPedido = ped.horaPedido;
+            observacionPedido = ped.observacionPedido;
+            domicilioEntregaPedido = ped.domicilioEntregaPedido;
+            listaPromociones = ped.listaPromociones;
+            montoAbono = ped.montoAbono;
+            tiempoDemora = ped.tiempoDemora;
+            descuento = ped.descuento;
+            nombreClienteMostrador = ped.nombreClienteMostrador;
         }
 
-        public void addPromocion(Promocion promo)
+        public void AddPromocion(Promocion promo)
         {
             if (listaPromociones == null)
-            {
                 listaPromociones = new List<Promocion>();
-            }
-            else
-                listaPromociones.Add(promo);
+
+            listaPromociones.Add(promo);
         }
     }
 }

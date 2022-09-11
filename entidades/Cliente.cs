@@ -7,7 +7,7 @@ namespace Entidades
 {
     public class Cliente
     {
-        public int idCliente { set; get; }
+        public long idCliente { set; get; }
         public String nombreCliente { set; get; }
         public String domicilioCliente { set; get; }
         public String telefonoCliente { set; get; }

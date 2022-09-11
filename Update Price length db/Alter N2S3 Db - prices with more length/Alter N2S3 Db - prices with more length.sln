@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alter N2S3 Db", "Alter N2S3 Db - prices with more length\Alter N2S3 Db.csproj", "{77FC0E92-112B-4F6A-9E33-97B424DCB9B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFunctions", "DbFunctions\DbFunctions.csproj", "{B68C7878-8D2C-48DB-97CC-2708AC509B45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77FC0E92-112B-4F6A-9E33-97B424DCB9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FC0E92-112B-4F6A-9E33-97B424DCB9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FC0E92-112B-4F6A-9E33-97B424DCB9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FC0E92-112B-4F6A-9E33-97B424DCB9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B68C7878-8D2C-48DB-97CC-2708AC509B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68C7878-8D2C-48DB-97CC-2708AC509B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68C7878-8D2C-48DB-97CC-2708AC509B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68C7878-8D2C-48DB-97CC-2708AC509B45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3793113B-27C3-4144-97BE-632BF7758218}
+	EndGlobalSection
+EndGlobal
